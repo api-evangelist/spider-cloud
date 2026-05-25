@@ -1,0 +1,85 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Spider Cloud
+providerId: spider-cloud
+created: '2026-05-25'
+modified: '2026-05-25'
+tags:
+  - Crawling
+  - Scraping
+  - Data Extraction
+  - URLs
+  - AI
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: Rate limit definitions for the Spider Cloud API. Every account is permitted up to 10,000 core
+  API requests per minute by default. Spider's hosted MCP server inherits the same per-account API limit.
+  Browser-automation sessions are constrained to five concurrent sessions and time out after five minutes
+  of inactivity. Enterprise accounts can negotiate higher limits.
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+  policy: RateLimit-Policy
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: default
+    name: Default Core API RPM
+    scope: account
+    metric: requests_per_minute
+    limit: 10000
+    timeFrame: minute
+    applies:
+      - Spider API
+      - Spider Cloud MCP Server
+  - tier: default
+    name: Browser Session Concurrency
+    scope: account
+    metric: concurrent_sessions
+    limit: 5
+    timeFrame: instant
+    applies:
+      - Spider API
+      - Spider Cloud MCP Server
+  - tier: default
+    name: Browser Session Idle Timeout
+    scope: session
+    metric: idle_minutes
+    limit: 5
+    timeFrame: minute
+    applies:
+      - Spider Cloud MCP Server
+  - tier: enterprise
+    name: Negotiated Enterprise Limit
+    scope: contract
+    metric: requests_per_minute
+    limit: -1
+    timeFrame: minute
+    applies:
+      - Spider API
+      - Spider Cloud MCP Server
+policies:
+  - name: Backoff Strategy
+    description: Clients should implement exponential backoff with jitter on 429 responses, honoring the
+      Retry-After header when present.
+  - name: Failed Requests Are Free
+    description: Spider's billing model does not charge for failed responses — only successful responses
+      that return data — which complements rate limit recovery.
+  - name: Browser Session Lifecycle
+    description: Browser-automation sessions are limited to five concurrent sessions per account and are
+      automatically closed after five minutes of inactivity.
+  - name: Enterprise Negotiation
+    description: Accounts needing more than 10,000 RPM should contact sales for custom rate limit
+      provisioning.
+  - name: Robots.txt
+    description: Crawling honors robots.txt by default; clients can opt out but should respect target-site
+      policies and fair-use norms.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

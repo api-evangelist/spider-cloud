@@ -1,0 +1,147 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spider Cloud API — Account Data
+  description: 'Spider Cloud API — Account Data. Browse the scraper directory, retrieve recent crawl
+    activity logs, and check remaining credit balance. Self-contained Naftiko capability covering account
+    observability and management.'
+  tags:
+    - Spider Cloud
+    - Account
+    - Logs
+    - Credits
+    - Directory
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      SPIDER_CLOUD_API_KEY: SPIDER_CLOUD_API_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: spider-cloud-data
+      baseUri: https://api.spider.cloud
+      description: Spider Cloud API — Account Data business capability. Self-contained, no shared references.
+      resources:
+        - name: scraper-directory
+          path: /data/scraper-directory
+          operations:
+            - name: listscraperdirectory
+              method: GET
+              description: Browse pre-built extraction configurations by domain or category.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: category
+                  in: query
+                  type: string
+                  description: Filter by category.
+                  required: false
+                - name: domain
+                  in: query
+                  type: string
+                  description: Filter by domain.
+                  required: false
+        - name: crawl-logs
+          path: /data/crawl_logs
+          operations:
+            - name: listcrawllogs
+              method: GET
+              description: Retrieve the last 24 hours of crawl activity for the authenticated account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+        - name: credits
+          path: /data/credits
+          operations:
+            - name: getcredits
+              method: GET
+              description: Return the remaining credit balance for the authenticated account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+      authentication:
+        type: bearer
+        token: '{{env.SPIDER_CLOUD_API_KEY}}'
+  exposes:
+    - type: rest
+      namespace: spider-cloud-data-rest
+      port: 8080
+      description: REST adapter for Spider Cloud API — Account Data.
+      resources:
+        - path: /v1/data/scraper-directory
+          name: scraper-directory
+          description: REST surface for scraper-directory.
+          operations:
+            - method: GET
+              name: listscraperdirectory
+              description: Browse pre-built extraction configurations.
+              call: spider-cloud-data.listscraperdirectory
+              outputParameters:
+                - type: array
+                  mapping: $.
+        - path: /v1/data/crawl-logs
+          name: crawl-logs
+          description: REST surface for crawl-logs.
+          operations:
+            - method: GET
+              name: listcrawllogs
+              description: Retrieve the last 24 hours of crawl activity.
+              call: spider-cloud-data.listcrawllogs
+              outputParameters:
+                - type: array
+                  mapping: $.
+        - path: /v1/data/credits
+          name: credits
+          description: REST surface for credits.
+          operations:
+            - method: GET
+              name: getcredits
+              description: Return the remaining credit balance.
+              call: spider-cloud-data.getcredits
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: spider-cloud-data-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Spider Cloud API — Account Data.
+      tools:
+        - name: list-scraper-directory
+          description: Browse pre-built extraction configurations by domain or category.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: spider-cloud-data.listscraperdirectory
+          outputParameters:
+            - type: array
+              mapping: $.
+        - name: list-crawl-logs
+          description: Retrieve the last 24 hours of crawl activity.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: spider-cloud-data.listcrawllogs
+          outputParameters:
+            - type: array
+              mapping: $.
+        - name: get-credits
+          description: Return the remaining credit balance for the authenticated account.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: spider-cloud-data.getcredits
+          outputParameters:
+            - type: object
+              mapping: $.

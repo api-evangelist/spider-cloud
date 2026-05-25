@@ -1,0 +1,237 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Spider Cloud
+providerId: spider-cloud
+created: '2026-05-25'
+modified: '2026-05-25'
+tags:
+  - Crawling
+  - Scraping
+  - Data Extraction
+  - URLs
+  - AI
+  - Markdown
+  - MCP
+description: Machine-readable plans and pricing for the Spider Cloud API. Spider runs on a pay-as-you-go,
+  no-subscription model billed on bandwidth ($1/GB) plus compute ($0.001/minute). Credits never expire and
+  failed requests cost nothing. Volume tiers add bonus credits at $500+/$1K+/$2K+ purchases. Enterprise
+  pricing is custom-negotiated.
+plans:
+  - id: spider-cloud-free
+    name: Free Credits
+    type: freemium
+    description: New accounts receive complimentary credits to evaluate the platform — no credit card required.
+      Credits are consumed against the same metered model as the paid plan ($1 per GB of bandwidth plus
+      $0.001 per compute minute).
+    entries:
+      - label: Sign-up Credits
+        description: One-time credit grant on account creation.
+        name: signup_credits
+        type: quota
+        metric: credits_usd
+        limit: -1
+        timeFrame: lifetime
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Core API rate limit applied per account.
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 10000
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support
+      - name: GitHub Discussions
+      - name: Spider API
+      - name: Spider Cloud MCP Server
+  - id: spider-cloud-pay-as-you-go
+    name: Pay As You Go
+    type: paid
+    description: Pure usage-based plan with no subscription. Bandwidth is billed at $1 per GB plus $0.001
+      per minute of compute. Failed requests cost nothing. Credits never expire. Top-up packages start at
+      $5, $25, and $100; purchases of $500, $1,000, and $2,000 add 5%, 8%, and 12% bonus credits.
+    entries:
+      - label: Bandwidth
+        description: Outbound bandwidth consumed by successful responses.
+        name: bandwidth
+        type: metered
+        metric: bandwidth_gb
+        limit: -1
+        timeFrame: any
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '1.00'
+        userMultiplied: false
+      - label: Compute
+        description: Server-side compute consumed by the request.
+        name: compute
+        type: metered
+        metric: compute_minutes
+        limit: -1
+        timeFrame: any
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '0.001'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Up to 10,000 core API requests per minute per account.
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 10000
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Top-up $500 Bonus
+        description: 5% bonus credits added to top-ups of $500 or more.
+        name: bonus_500
+        type: quota
+        metric: bonus_percent
+        limit: 5
+        timeFrame: any
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '500.00'
+        userMultiplied: false
+      - label: Top-up $1,000 Bonus
+        description: 8% bonus credits added to top-ups of $1,000 or more.
+        name: bonus_1000
+        type: quota
+        metric: bonus_percent
+        limit: 8
+        timeFrame: any
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '1000.00'
+        userMultiplied: false
+      - label: Top-up $2,000 Bonus
+        description: 12% bonus credits added to top-ups of $2,000 or more.
+        name: bonus_2000
+        type: quota
+        metric: bonus_percent
+        limit: 12
+        timeFrame: any
+        geo: global
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: '2000.00'
+        userMultiplied: false
+    elements:
+      - name: All Core Endpoints
+      - name: Residential, ISP, and Mobile Proxies
+      - name: Cloud Headless Browsers
+      - name: Anti-Bot Bypass
+      - name: Failed Requests Free
+      - name: Credits Never Expire
+      - name: Spider API
+      - name: Spider Cloud MCP Server
+  - id: spider-cloud-ai
+    name: AI Tier
+    type: subscription
+    description: AI-routed variants of the core endpoints — spider_ai_crawl, spider_ai_scrape, spider_ai_search,
+      spider_ai_browser, spider_ai_links — that use Spider's AI fetch system for per-domain configuration
+      discovery. Requires the AI subscription on top of pay-as-you-go usage charges. Contact Spider for
+      current subscription pricing.
+    entries:
+      - label: AI Routing Subscription
+        description: Subscription required to unlock the AI-routed variants of the core operations.
+        name: ai_subscription
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://api.spider.cloud
+          - https://mcp.spider.cloud/mcp
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: spider_ai_crawl
+      - name: spider_ai_scrape
+      - name: spider_ai_search
+      - name: spider_ai_browser
+      - name: spider_ai_links
+  - id: spider-cloud-enterprise
+    name: Enterprise / Custom
+    type: enterprise
+    description: Volume pricing and custom scraping engagements negotiated directly with Spider's sales team.
+      Includes dedicated capacity, custom rate limits, security review, and named technical contact.
+    entries:
+      - label: Negotiated Bandwidth
+        description: Discounted per-GB bandwidth rate at committed volume.
+        name: bandwidth
+        type: metered
+        metric: bandwidth_gb
+        limit: -1
+        timeFrame: any
+        geo: configurable
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Negotiated Compute
+        description: Discounted per-minute compute rate at committed volume.
+        name: compute
+        type: metered
+        metric: compute_minutes
+        limit: -1
+        timeFrame: any
+        geo: configurable
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Negotiated Rate Limit
+        description: Custom rate limits above the default 10,000 RPM ceiling.
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: -1
+        timeFrame: minute
+        geo: configurable
+        domains:
+          - https://api.spider.cloud
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Volume Discount
+      - name: Custom Rate Limits
+      - name: Dedicated Capacity
+      - name: Custom Scraping Engagements
+      - name: Sales Engagement Required
+      - name: Spider API
+      - name: Spider Cloud MCP Server
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

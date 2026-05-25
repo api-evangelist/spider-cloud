@@ -1,0 +1,551 @@
+openapi: 3.0.3
+info:
+  title: Spider Cloud API
+  version: v1
+  description: |
+    Spider Cloud is a Rust-based, AI-friendly web scraping and crawling platform.
+    The REST API accepts and returns JSON (also XML, CSV, JSONL via the content-type header)
+    and authenticates with a Bearer API key. Every account is allowed up to 10,000 core
+    API requests per minute.
+  contact:
+    name: Spider Cloud Support
+    url: https://spider.cloud
+    email: support@spider.cloud
+  license:
+    name: Proprietary
+    url: https://spider.cloud
+servers:
+  - url: https://api.spider.cloud
+    description: Spider Cloud production API
+security:
+  - bearerAuth: []
+tags:
+  - name: Crawling
+    description: Recursively crawl entire websites and collect every page.
+  - name: Scraping
+    description: Extract content from individual web pages.
+  - name: Search
+    description: Search the web and crawl results.
+  - name: Links
+    description: Collect all links from a website.
+  - name: Screenshot
+    description: Capture full-page or viewport screenshots.
+  - name: Unblocker
+    description: Access content behind anti-bot protections.
+  - name: Transform
+    description: Convert raw HTML or PDF into clean output (markdown, JSON, text).
+  - name: Fetch
+    description: Per-website APIs with AI-discovered configurations.
+  - name: Data
+    description: Account data — scraper directory, crawl logs, credits balance.
+paths:
+  /crawl:
+    post:
+      tags:
+        - Crawling
+      summary: Crawl a Website
+      operationId: crawl
+      description: Recursively crawl an entire website and return every page as clean markdown, JSON, HTML, or
+        another supported format.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrawlRequest'
+      responses:
+        '200':
+          description: Crawl result payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrawlResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/Throttled'
+  /scrape:
+    post:
+      tags:
+        - Scraping
+      summary: Scrape a URL
+      operationId: scrape
+      description: Extract content from a single web page in markdown, structured JSON, HTML, plain text,
+        CSV, or XML.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScrapeRequest'
+      responses:
+        '200':
+          description: Scrape result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScrapeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/Throttled'
+  /search:
+    post:
+      tags:
+        - Search
+      summary: Search the Web
+      operationId: search
+      description: Run a web search query and optionally crawl the returned results.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /links:
+    post:
+      tags:
+        - Links
+      summary: Collect Links
+      operationId: links
+      description: Collect every link from a website without scraping page content.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinksRequest'
+      responses:
+        '200':
+          description: Link list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinksResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /screenshot:
+    post:
+      tags:
+        - Screenshot
+      summary: Capture a Screenshot
+      operationId: screenshot
+      description: Capture a full-page or viewport screenshot of a URL.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenshotRequest'
+      responses:
+        '200':
+          description: Screenshot binary or URL reference.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreenshotResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /unblocker:
+    post:
+      tags:
+        - Unblocker
+      summary: Bypass Anti-Bot Protections
+      operationId: unblocker
+      description: Fetch content from sites protected by anti-bot systems using stealth headers, residential
+        proxies, and fingerprint rotation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnblockerRequest'
+      responses:
+        '200':
+          description: Unblocker response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnblockerResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /transform:
+    post:
+      tags:
+        - Transform
+      summary: Transform HTML or PDF
+      operationId: transform
+      description: Convert raw HTML or PDF input into clean markdown, JSON, plain text, or other supported
+        output formats.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformRequest'
+      responses:
+        '200':
+          description: Transformed output.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /fetch/{domain}/{path}:
+    post:
+      tags:
+        - Fetch
+      summary: Fetch a Per-Domain API
+      operationId: fetchDomain
+      description: Invoke a per-website API discovered and pre-configured by Spider's AI fetch system.
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The target domain (e.g., `example.com`).
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The fetch operation path under the given domain.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Fetch payload.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/scraper-directory:
+    get:
+      tags:
+        - Data
+      summary: Browse the Scraper Directory
+      operationId: listScraperDirectory
+      description: Browse pre-built extraction configurations by domain or category.
+      parameters:
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: domain
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scraper directory entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScraperDirectoryEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/crawl_logs:
+    get:
+      tags:
+        - Data
+      summary: List Recent Crawl Logs
+      operationId: listCrawlLogs
+      description: Retrieve the last 24 hours of crawl activity for the authenticated account.
+      responses:
+        '200':
+          description: Crawl log entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CrawlLogEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/credits:
+    get:
+      tags:
+        - Data
+      summary: Get Credit Balance
+      operationId: getCredits
+      description: Return the remaining credit balance for the authenticated account.
+      responses:
+        '200':
+          description: Credit balance.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Throttled:
+      description: Rate limit exceeded (10,000 RPM per account).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+    CrawlRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: The seed URL to crawl.
+        limit:
+          type: integer
+          description: Maximum number of pages to crawl.
+        depth:
+          type: integer
+          description: Maximum crawl depth from the seed URL.
+        return_format:
+          type: string
+          enum: [markdown, html, text, json, raw]
+        respect_robots_txt:
+          type: boolean
+          default: true
+        proxy_enabled:
+          type: boolean
+        stealth:
+          type: boolean
+        chrome:
+          type: boolean
+          description: Use a full headless browser instead of HTTP-only fetcher.
+    CrawlResponse:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              status:
+                type: integer
+              content:
+                type: string
+              metadata:
+                type: object
+                additionalProperties: true
+    ScrapeRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+        return_format:
+          type: string
+          enum: [markdown, html, text, json, raw]
+        chrome:
+          type: boolean
+        proxy_enabled:
+          type: boolean
+        stealth:
+          type: boolean
+    ScrapeResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: integer
+        content:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    SearchRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+        limit:
+          type: integer
+        fetch_page_content:
+          type: boolean
+          description: When true, crawl every result and return its page content.
+    SearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              content:
+                type: string
+    LinksRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+        limit:
+          type: integer
+        depth:
+          type: integer
+    LinksResponse:
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            type: string
+    ScreenshotRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+        full_page:
+          type: boolean
+        viewport_width:
+          type: integer
+        viewport_height:
+          type: integer
+        format:
+          type: string
+          enum: [png, jpeg, webp]
+    ScreenshotResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        image_base64:
+          type: string
+        image_url:
+          type: string
+    UnblockerRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+        country:
+          type: string
+          description: ISO country code for residential proxy egress.
+        chrome:
+          type: boolean
+    UnblockerResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: integer
+        content:
+          type: string
+    TransformRequest:
+      type: object
+      properties:
+        html:
+          type: string
+        pdf_base64:
+          type: string
+        return_format:
+          type: string
+          enum: [markdown, text, json]
+    TransformResponse:
+      type: object
+      properties:
+        content:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    ScraperDirectoryEntry:
+      type: object
+      properties:
+        domain:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        config:
+          type: object
+          additionalProperties: true
+    CrawlLogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        status:
+          type: integer
+        bytes:
+          type: integer
+        compute_seconds:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+    CreditsResponse:
+      type: object
+      properties:
+        balance_usd:
+          type: number
+        bandwidth_gb_used:
+          type: number
+        compute_minutes_used:
+          type: number

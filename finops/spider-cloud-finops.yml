@@ -1,0 +1,162 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Spider Cloud
+providerId: spider-cloud
+publisherName: Spider Cloud
+serviceCategory: API
+created: '2026-05-25'
+modified: '2026-05-25'
+tags:
+  - Crawling
+  - Scraping
+  - Data Extraction
+  - URLs
+  - AI
+  - Markdown
+  - MCP
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Spider Cloud API. Spider bills on two primary meters —
+  bandwidth ($1/GB) and compute ($0.001/minute) — with failed requests excluded from billing. This
+  FOCUS-aligned mapping captures the bandwidth and compute meters, the credit-based purchase model with
+  volume bonuses, and unit-economics for cost-per-page and cost-per-GB reporting.
+principles:
+  - name: Visibility
+    description: Surface bandwidth and compute consumption in near real-time so engineering and finance
+      can see exactly how each crawl, scrape, or search consumes credits.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, and application so
+      the credit burn-down can be allocated cleanly.
+  - name: Optimization
+    description: Tune crawl depth, output format, and headless-browser usage to minimize bandwidth and
+      compute per page of useful data extracted.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each team consuming Spider
+      credits.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: PrePaid Credits
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Credit
+    - Adjustment
+  chargeFrequency: Usage-Based
+focusColumns:
+  ServiceName: Spider Cloud
+  ServiceCategory: Developer Tools / Web Data API
+  ProviderName: Spider Cloud
+  PublisherName: Spider Cloud
+  InvoiceIssuerName: Spider Cloud
+  PricingCategory: Usage-Based
+  PricingUnit: GB / compute-minute
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: bandwidth_gb
+    description: Outbound bandwidth in gigabytes consumed by successful responses.
+    unit: GB
+    aggregation: sum
+    rate: 1.00
+    rateCurrency: USD
+    dimensions:
+      - endpoint
+      - region
+      - consumer
+  - name: compute_minutes
+    description: Server-side compute time consumed by the request.
+    unit: minute
+    aggregation: sum
+    rate: 0.001
+    rateCurrency: USD
+    dimensions:
+      - endpoint
+      - tier
+      - consumer
+  - name: successful_requests
+    description: Count of billable (successful) API requests; failed requests are excluded from billing.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: credit_balance
+    description: Remaining pre-paid credit balance reported via /data/credits.
+    unit: USD
+    aggregation: snapshot
+    dimensions:
+      - account
+apis:
+  - name: Spider API
+    baseURL: https://api.spider.cloud
+    tags:
+      - Crawling
+      - Scraping
+      - Data Extraction
+      - URLs
+      - AI
+      - Markdown
+    serviceName: Spider API
+    serviceCategory: API
+  - name: Spider Cloud MCP Server
+    baseURL: https://mcp.spider.cloud/mcp
+    tags:
+      - MCP
+      - AI
+      - Agents
+    serviceName: Spider Cloud MCP Server
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per GB Extracted
+    metric: billed_cost / bandwidth_gb
+    target: '$1.00'
+  - name: Cost per Compute Minute
+    metric: billed_cost / compute_minutes
+    target: '$0.001'
+  - name: Cost per 1K Successful Requests
+    metric: billed_cost / (successful_requests / 1000)
+    target: TBD
+  - name: Effective Cost per Page Crawled
+    metric: billed_cost / pages_crawled
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
