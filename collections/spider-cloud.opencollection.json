@@ -1,0 +1,267 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spider Cloud API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Crawling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Crawl a Website",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/crawl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Recursively crawl an entire website and return every page as clean markdown, JSON, HTML, or another supported format."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scraping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scrape a URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/scrape",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extract content from a single web page in markdown, structured JSON, HTML, plain text, CSV, or XML."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the Web",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run a web search query and optionally crawl the returned results."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Collect Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/links",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Collect every link from a website without scraping page content."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Screenshot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capture a Screenshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/screenshot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture a full-page or viewport screenshot of a URL."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unblocker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bypass Anti-Bot Protections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/unblocker",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetch content from sites protected by anti-bot systems using stealth headers, residential proxies, and fingerprint rotation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transform HTML or PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/transform",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert raw HTML or PDF input into clean markdown, JSON, plain text, or other supported output formats."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fetch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a Per-Domain API",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/fetch/:domain/:path",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The target domain (e.g., `example.com`)."
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "The fetch operation path under the given domain."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invoke a per-website API discovered and pre-configured by Spider's AI fetch system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Browse the Scraper Directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spider.cloud/data/scraper-directory",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Browse pre-built extraction configurations by domain or category."
+        },
+        {
+          "info": {
+            "name": "List Recent Crawl Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spider.cloud/data/crawl_logs"
+          },
+          "docs": "Retrieve the last 24 hours of crawl activity for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Get Credit Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spider.cloud/data/credits"
+          },
+          "docs": "Return the remaining credit balance for the authenticated account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

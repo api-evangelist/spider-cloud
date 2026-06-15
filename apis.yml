@@ -1,8 +1,9 @@
 aid: spider-cloud
 name: Spider
-description: Spider is a Rust-based, AI-friendly web scraping and crawling cloud. Point it at a URL and get back
-  clean markdown, structured JSON, screenshots, or links — at up to 100K pages per second — with anti-bot bypass,
-  residential proxies, headless browsers, and native MCP, LangChain, LlamaIndex, CrewAI, and AutoGen integrations.
+description: >-
+  Spider is a Rust-based, AI-friendly web scraping and crawling cloud. Point it at a URL and get back clean markdown,
+  structured JSON, screenshots, or links — at up to 100K pages per second — with anti-bot bypass, residential proxies,
+  headless browsers, and native MCP, LangChain, LlamaIndex, CrewAI, and AutoGen integrations.
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
@@ -25,11 +26,12 @@ specificationVersion: '0.19'
 apis:
   - aid: spider-cloud:spider-api
     name: Spider API
-    description: The Spider Cloud REST API exposes core /crawl, /scrape, /search, /links, /screenshot, /unblocker,
-      and /transform endpoints, plus AI-discovered per-domain /fetch endpoints, residential/ISP/mobile proxy
-      routing via proxy.spider.cloud, CDP/WebDriver BiDi cloud browsers, scraper directory lookups, crawl logs,
-      and a credits endpoint. All endpoints accept and return JSON (also XML, CSV, JSONL via content-type) and
-      authenticate with Bearer API keys. Up to 10,000 RPM per account.
+    description: >-
+      The Spider Cloud REST API exposes core /crawl, /scrape, /search, /links, /screenshot, /unblocker, and /transform
+      endpoints, plus AI-discovered per-domain /fetch endpoints, residential/ISP/mobile proxy routing via
+      proxy.spider.cloud, CDP/WebDriver BiDi cloud browsers, scraper directory lookups, crawl logs, and a credits
+      endpoint. All endpoints accept and return JSON (also XML, CSV, JSONL via content-type) and authenticate with
+      Bearer API keys. Up to 10,000 RPM per account.
     humanURL: https://spider.cloud/docs/api
     baseURL: https://api.spider.cloud
     tags:
@@ -54,23 +56,13 @@ apis:
         url: https://spider.cloud/docs/api
       - type: RateLimits
         url: https://spider.cloud/docs/api
-      - type: NaftikoCapability
-        url: capabilities/spider-cloud-crawling.yaml
-      - type: NaftikoCapability
-        url: capabilities/spider-cloud-scraping.yaml
-      - type: NaftikoCapability
-        url: capabilities/spider-cloud-search.yaml
-      - type: NaftikoCapability
-        url: capabilities/spider-cloud-browser.yaml
-      - type: NaftikoCapability
-        url: capabilities/spider-cloud-data.yaml
   - aid: spider-cloud:spider-mcp
     name: Spider Cloud MCP Server
-    description: Spider's hosted Model Context Protocol server exposes 22 tools — eight core operations
-      (crawl, scrape, search, links, screenshot, unblocker, transform, get_credits), five AI-routed variants,
-      and nine browser-automation tools (open, navigate, click, fill, screenshot, content, evaluate, wait_for,
-      close) — to any MCP-compatible client. Authenticated with a Bearer API key. Also runnable locally via
-      `npx spider-cloud-mcp`.
+    description: >-
+      Spider's hosted Model Context Protocol server exposes 22 tools — eight core operations (crawl, scrape, search,
+      links, screenshot, unblocker, transform, get_credits), five AI-routed variants, and nine browser-automation tools
+      (open, navigate, click, fill, screenshot, content, evaluate, wait_for, close) — to any MCP-compatible client.
+      Authenticated with a Bearer API key. Also runnable locally via `npx spider-cloud-mcp`.
     humanURL: https://spider.cloud/docs/integrations/mcp
     baseURL: https://mcp.spider.cloud/mcp
     tags:
