@@ -5,7 +5,7 @@ description: >-
   structured JSON, screenshots, or links — at up to 100K pages per second — with anti-bot bypass, residential proxies,
   headless browsers, and native MCP, LangChain, LlamaIndex, CrewAI, and AutoGen integrations.
 kind: contract
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2026-05-25'
 modified: '2026-05-25'
