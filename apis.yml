@@ -98,29 +98,29 @@ common:
     url: https://github.com/spider-rs/spider
   - type: SDKs
     url: https://github.com/spider-rs/spider-clients
-  - type: SDK
+  - type: SDKs
     url: https://github.com/spider-rs/spider-py
-  - type: SDK
+  - type: SDKs
     url: https://github.com/spider-rs/spider-nodejs
-  - type: SDK
+  - type: SDKs
     url: https://docs.rs/spider
   - type: MCP
     url: https://mcp.spider.cloud/mcp
   - type: Integrations
     url: https://spider.cloud/docs/integrations/mcp
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/langchain
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/llamaindex
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/crewai
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/flowiseai
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/agno
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/zapier
-  - type: Integration
+  - type: Integrations
     url: https://spider.cloud/docs/integrations/x402
   - type: Support
     url: mailto:support@spider.cloud
