@@ -80,6 +80,10 @@ apis:
       - type: Authentication
         url: https://spider.cloud/docs/integrations/mcp
 common:
+  - type: DomainSecurity
+    url: security/spider-cloud-domain-security.yml
+  - type: Authentication
+    url: authentication/spider-cloud-authentication.yml
   - type: Website
     url: https://spider.cloud
   - type: Documentation
@@ -130,6 +134,8 @@ common:
     url: rate-limits/spider-cloud-rate-limits.yml
   - type: FinOps
     url: finops/spider-cloud-finops.yml
+  - url: https://spider.cloud/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
