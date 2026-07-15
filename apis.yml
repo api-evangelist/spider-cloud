@@ -80,6 +80,8 @@ apis:
       - type: Authentication
         url: https://spider.cloud/docs/integrations/mcp
 common:
+  - type: AgenticAccess
+    url: agentic-access/spider-cloud-agentic-access.yml
   - type: DomainSecurity
     url: security/spider-cloud-domain-security.yml
   - type: Authentication
