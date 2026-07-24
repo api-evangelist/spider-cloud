@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Spider Cloud Crawling Data API
+  version: v1
+  description: 'Spider Cloud is a Rust-based, AI-friendly web scraping and crawling platform.
+
+    The REST API accepts and returns JSON (also XML, CSV, JSONL via the content-type header)
+
+    and authenticates with a Bearer API key. Every account is allowed up to 10,000 core
+
+    API requests per minute.
+
+    '
+  contact:
+    name: Spider Cloud Support
+    url: https://spider.cloud
+    email: support@spider.cloud
+  license:
+    name: Proprietary
+    url: https://spider.cloud
+servers:
+- url: https://api.spider.cloud
+  description: Spider Cloud production API
+security:
+- bearerAuth: []
+tags:
+- name: Data
+  description: Account data — scraper directory, crawl logs, credits balance.
+paths:
+  /data/scraper-directory:
+    get:
+      tags:
+      - Data
+      summary: Browse the Scraper Directory
+      operationId: listScraperDirectory
+      description: Browse pre-built extraction configurations by domain or category.
+      parameters:
+      - name: category
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scraper directory entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScraperDirectoryEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/crawl_logs:
+    get:
+      tags:
+      - Data
+      summary: List Recent Crawl Logs
+      operationId: listCrawlLogs
+      description: Retrieve the last 24 hours of crawl activity for the authenticated account.
+      responses:
+        '200':
+          description: Crawl log entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CrawlLogEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/credits:
+    get:
+      tags:
+      - Data
+      summary: Get Credit Balance
+      operationId: getCredits
+      description: Return the remaining credit balance for the authenticated account.
+      responses:
+        '200':
+          description: Credit balance.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    CreditsResponse:
+      type: object
+      properties:
+        balance_usd:
+          type: number
+        bandwidth_gb_used:
+          type: number
+        compute_minutes_used:
+          type: number
+    ScraperDirectoryEntry:
+      type: object
+      properties:
+        domain:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        config:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+    CrawlLogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        status:
+          type: integer
+        bytes:
+          type: integer
+        compute_seconds:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
