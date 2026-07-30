@@ -5,7 +5,20 @@ description: >-
   structured JSON, screenshots, or links — at up to 100K pages per second — with anti-bot bypass, residential proxies,
   headless browsers, and native MCP, LangChain, LlamaIndex, CrewAI, and AutoGen integrations.
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/spider-cloud.png
 access: 3rd-Party
 created: '2026-05-25'
 modified: '2026-05-25'
@@ -24,61 +37,191 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/spider-cloud/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: spider-cloud:spider-api
-    name: Spider API
-    description: >-
-      The Spider Cloud REST API exposes core /crawl, /scrape, /search, /links, /screenshot, /unblocker, and /transform
-      endpoints, plus AI-discovered per-domain /fetch endpoints, residential/ISP/mobile proxy routing via
-      proxy.spider.cloud, CDP/WebDriver BiDi cloud browsers, scraper directory lookups, crawl logs, and a credits
-      endpoint. All endpoints accept and return JSON (also XML, CSV, JSONL via content-type) and authenticate with
-      Bearer API keys. Up to 10,000 RPM per account.
-    humanURL: https://spider.cloud/docs/api
-    baseURL: https://api.spider.cloud
-    tags:
-      - Crawling
-      - Scraping
-      - Data Extraction
-      - URLs
-      - AI
-      - Markdown
-      - Search
-      - Screenshot
-      - Headless Browser
-      - Proxies
-    properties:
-      - type: Documentation
-        url: https://spider.cloud/docs/api
-      - type: Documentation
-        url: https://spider.cloud/docs/overview
-      - type: OpenAPI
-        url: openapi/spider-cloud-openapi.yml
-      - type: Authentication
-        url: https://spider.cloud/docs/api
-      - type: RateLimits
-        url: https://spider.cloud/docs/api
-  - aid: spider-cloud:spider-mcp
-    name: Spider Cloud MCP Server
-    description: >-
-      Spider's hosted Model Context Protocol server exposes 22 tools — eight core operations (crawl, scrape, search,
-      links, screenshot, unblocker, transform, get_credits), five AI-routed variants, and nine browser-automation tools
-      (open, navigate, click, fill, screenshot, content, evaluate, wait_for, close) — to any MCP-compatible client.
-      Authenticated with a Bearer API key. Also runnable locally via `npx spider-cloud-mcp`.
-    humanURL: https://spider.cloud/docs/integrations/mcp
-    baseURL: https://mcp.spider.cloud/mcp
-    tags:
-      - MCP
-      - AI
-      - Agents
-      - Crawling
-      - Scraping
-      - Browser Automation
-    properties:
-      - type: Documentation
-        url: https://spider.cloud/docs/integrations/mcp
-      - type: SourceCode
-        url: https://github.com/spider-rs/spider-cloud-mcp-v2
-      - type: Authentication
-        url: https://spider.cloud/docs/integrations/mcp
+- aid: spider-cloud:spider-mcp
+  name: Spider Cloud MCP Server
+  description: >-
+    Spider's hosted Model Context Protocol server exposes 22 tools — eight core operations (crawl, scrape,
+    search, links, screenshot, unblocker, transform, get_credits), five AI-routed variants, and nine browser-automation
+    tools (open, navigate, click, fill, screenshot, content, evaluate, wait_for, close) — to any MCP-compatible
+    client. Authenticated with a Bearer API key. Also runnable locally via `npx spider-cloud-mcp`.
+  humanURL: https://spider.cloud/docs/integrations/mcp
+  baseURL: https://mcp.spider.cloud/mcp
+  tags:
+  - MCP
+  - AI
+  - Agents
+  - Crawling
+  - Scraping
+  - Browser Automation
+  properties:
+  - type: Documentation
+    url: https://spider.cloud/docs/integrations/mcp
+  - type: SourceCode
+    url: https://github.com/spider-rs/spider-cloud-mcp-v2
+  - type: Authentication
+    url: https://spider.cloud/docs/integrations/mcp
+- aid: spider-cloud:spider-cloud-crawling-api
+  name: Spider Crawling API
+  description: Recursively crawl entire websites and collect every page.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Crawling
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-crawling-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-data-api
+  name: Spider Data API
+  description: Account data — scraper directory, crawl logs, credits balance.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Data
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-data-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-fetch-api
+  name: Spider Fetch API
+  description: Per-website APIs with AI-discovered configurations.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Fetch
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-fetch-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-links-api
+  name: Spider Links API
+  description: Collect all links from a website.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Links
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-links-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-scraping-api
+  name: Spider Scraping API
+  description: Extract content from individual web pages.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Scraping
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-scraping-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-screenshot-api
+  name: Spider Screenshot API
+  description: Capture full-page or viewport screenshots.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Screenshot
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-screenshot-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-search-api
+  name: Spider Search API
+  description: Search the web and crawl results.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-search-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-transform-api
+  name: Spider Transform API
+  description: Convert raw HTML or PDF into clean output (markdown, JSON, text).
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Transform
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-transform-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
+- aid: spider-cloud:spider-cloud-unblocker-api
+  name: Spider Unblocker API
+  description: Access content behind anti-bot protections.
+  humanURL: https://spider.cloud/docs/api
+  baseURL: https://api.spider.cloud
+  tags:
+  - Unblocker
+  properties:
+  - type: OpenAPI
+    url: openapi/spider-cloud-unblocker-api-openapi.yml
+  - type: Documentation
+    url: https://spider.cloud/docs/api
+  - type: Documentation
+    url: https://spider.cloud/docs/overview
+  - type: Authentication
+    url: https://spider.cloud/docs/api
+  - type: RateLimits
+    url: https://spider.cloud/docs/api
 common:
   - type: AgenticAccess
     url: agentic-access/spider-cloud-agentic-access.yml
