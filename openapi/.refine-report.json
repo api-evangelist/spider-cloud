@@ -1,0 +1,30 @@
+{
+  "provider": "spider-cloud",
+  "sources": [
+    "spider-cloud-crawling-api-openapi.yml",
+    "spider-cloud-data-api-openapi.yml",
+    "spider-cloud-fetch-api-openapi.yml",
+    "spider-cloud-links-api-openapi.yml",
+    "spider-cloud-scraping-api-openapi.yml",
+    "spider-cloud-screenshot-api-openapi.yml",
+    "spider-cloud-search-api-openapi.yml",
+    "spider-cloud-transform-api-openapi.yml",
+    "spider-cloud-unblocker-api-openapi.yml"
+  ],
+  "outputs": [
+    "spider-cloud-crawling-api-openapi.yml",
+    "spider-cloud-data-api-openapi.yml",
+    "spider-cloud-fetch-api-openapi.yml",
+    "spider-cloud-links-api-openapi.yml",
+    "spider-cloud-scraping-api-openapi.yml",
+    "spider-cloud-screenshot-api-openapi.yml",
+    "spider-cloud-search-api-openapi.yml",
+    "spider-cloud-transform-api-openapi.yml",
+    "spider-cloud-unblocker-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
