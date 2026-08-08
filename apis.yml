@@ -253,7 +253,7 @@ common:
     url: https://github.com/spider-rs/spider-nodejs
   - type: SDKs
     url: https://docs.rs/spider
-  - type: MCP
+  - type: MCPServer
     url: https://mcp.spider.cloud/mcp
   - type: Integrations
     url: https://spider.cloud/docs/integrations/mcp
