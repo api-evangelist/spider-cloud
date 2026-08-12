@@ -223,6 +223,9 @@ apis:
   - type: RateLimits
     url: https://spider.cloud/docs/api
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/spider-rs/spider-cloud-mcp-v2/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/spider-cloud-agentic-access.yml
   - type: DomainSecurity
