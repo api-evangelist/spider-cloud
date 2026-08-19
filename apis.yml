@@ -35,7 +35,7 @@ tags:
   - Headless Browser
   - Proxies
 url: https://raw.githubusercontent.com/api-evangelist/spider-cloud/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: spider-cloud:spider-mcp
   name: Spider Cloud MCP Server
