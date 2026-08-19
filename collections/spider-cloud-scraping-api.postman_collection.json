@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "b2cf08ff-ee98-43b2-94bb-77ac72ccd56b",
+      "name": "Scraping",
+      "description": {
+        "content": "Extract content from individual web pages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88d991c1-058d-4242-91d3-1f0acdca2db5",
+          "name": "Scrape a URL",
+          "request": {
+            "name": "Scrape a URL",
+            "description": {
+              "content": "Extract content from a single web page in markdown, structured JSON, HTML, plain text, CSV, or XML.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scrape"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"return_format\": \"<string>\",\n  \"chrome\": \"<boolean>\",\n  \"proxy_enabled\": \"<boolean>\",\n  \"stealth\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd29aa6d-3edb-48ce-8f96-d4633ffe3c6f",
+              "name": "Scrape result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"return_format\": \"<string>\",\n  \"chrome\": \"<boolean>\",\n  \"proxy_enabled\": \"<boolean>\",\n  \"stealth\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\",\n  \"status\": 4988,\n  \"content\": \"string\",\n  \"metadata\": {\n    \"key_0\": 3493.8757952021006\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65fb9025-602f-41fa-bbc8-9b5b97fd5985",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"return_format\": \"<string>\",\n  \"chrome\": \"<boolean>\",\n  \"proxy_enabled\": \"<boolean>\",\n  \"stealth\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38f49f20-7164-4cc1-b2b5-32cb5d4594c5",
+              "name": "Rate limit exceeded (10,000 RPM per account).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"return_format\": \"<string>\",\n  \"chrome\": \"<boolean>\",\n  \"proxy_enabled\": \"<boolean>\",\n  \"stealth\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spider.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "354accc2-8b65-430f-9c6e-69ac98fa17e6",
+    "name": "Spider Cloud Crawling Scraping API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spider Cloud is a Rust-based, AI-friendly web scraping and crawling platform.\nThe REST API accepts and returns JSON (also XML, CSV, JSONL via the content-type header)\nand authenticates with a Bearer API key. Every account is allowed up to 10,000 core\nAPI requests per minute.\n\n\nContact Support:\n Name: Spider Cloud Support\n Email: support@spider.cloud",
+      "type": "text/plain"
+    }
+  }
+}

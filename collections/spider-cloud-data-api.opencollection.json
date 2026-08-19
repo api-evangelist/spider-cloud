@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spider Cloud Crawling Data API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Browse the Scraper Directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spider.cloud/data/scraper-directory",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Browse pre-built extraction configurations by domain or category."
+        },
+        {
+          "info": {
+            "name": "List Recent Crawl Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spider.cloud/data/crawl_logs"
+          },
+          "docs": "Retrieve the last 24 hours of crawl activity for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Get Credit Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spider.cloud/data/credits"
+          },
+          "docs": "Return the remaining credit balance for the authenticated account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "3c7634a8-0670-4ffe-a31a-d9ac2edff752",
+      "name": "Transform",
+      "description": {
+        "content": "Convert raw HTML or PDF into clean output (markdown, JSON, text).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d7a0741-bff6-48c8-8e71-eced845b01c2",
+          "name": "Transform HTML or PDF",
+          "request": {
+            "name": "Transform HTML or PDF",
+            "description": {
+              "content": "Convert raw HTML or PDF input into clean markdown, JSON, plain text, or other supported output formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"html\": \"<string>\",\n  \"pdf_base64\": \"<string>\",\n  \"return_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "36a0531e-fe51-498a-b0f3-92c718131656",
+              "name": "Transformed output.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<string>\",\n  \"pdf_base64\": \"<string>\",\n  \"return_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": \"string\",\n  \"metadata\": {\n    \"key_0\": 4713\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf8e64cf-add6-4a7a-a22f-35eddb1e6b71",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<string>\",\n  \"pdf_base64\": \"<string>\",\n  \"return_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spider.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3db4e219-5d71-45e3-910e-2cc9cfe00acd",
+    "name": "Spider Cloud Crawling Transform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spider Cloud is a Rust-based, AI-friendly web scraping and crawling platform.\nThe REST API accepts and returns JSON (also XML, CSV, JSONL via the content-type header)\nand authenticates with a Bearer API key. Every account is allowed up to 10,000 core\nAPI requests per minute.\n\n\nContact Support:\n Name: Spider Cloud Support\n Email: support@spider.cloud",
+      "type": "text/plain"
+    }
+  }
+}

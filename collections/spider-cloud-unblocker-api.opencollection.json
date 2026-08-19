@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spider Cloud Crawling Unblocker API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Unblocker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bypass Anti-Bot Protections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/unblocker",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetch content from sites protected by anti-bot systems using stealth headers, residential proxies, and fingerprint rotation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

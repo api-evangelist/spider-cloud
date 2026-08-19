@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spider Cloud Crawling API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Crawling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Crawl a Website",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/crawl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Recursively crawl an entire website and return every page as clean markdown, JSON, HTML, or another supported format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

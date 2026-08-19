@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "496bc681-5810-493d-b628-7dd7fb47be1e",
+      "name": "Screenshot",
+      "description": {
+        "content": "Capture full-page or viewport screenshots.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9d05fc9-0feb-475a-8d2b-f6d7556dff32",
+          "name": "Capture a Screenshot",
+          "request": {
+            "name": "Capture a Screenshot",
+            "description": {
+              "content": "Capture a full-page or viewport screenshot of a URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screenshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"full_page\": \"<boolean>\",\n  \"viewport_width\": \"<integer>\",\n  \"viewport_height\": \"<integer>\",\n  \"format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16af0ebe-4ced-4119-ac13-397b6d8f1032",
+              "name": "Screenshot binary or URL reference.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screenshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"full_page\": \"<boolean>\",\n  \"viewport_width\": \"<integer>\",\n  \"viewport_height\": \"<integer>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\",\n  \"image_base64\": \"string\",\n  \"image_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a58431b-5c56-4af2-9bcd-60e5d32d19e1",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screenshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"full_page\": \"<boolean>\",\n  \"viewport_width\": \"<integer>\",\n  \"viewport_height\": \"<integer>\",\n  \"format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spider.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed8e69c8-7c71-4d75-a674-466028623690",
+    "name": "Spider Cloud Crawling Screenshot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spider Cloud is a Rust-based, AI-friendly web scraping and crawling platform.\nThe REST API accepts and returns JSON (also XML, CSV, JSONL via the content-type header)\nand authenticates with a Bearer API key. Every account is allowed up to 10,000 core\nAPI requests per minute.\n\n\nContact Support:\n Name: Spider Cloud Support\n Email: support@spider.cloud",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spider Cloud Crawling Screenshot API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screenshot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capture a Screenshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/screenshot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture a full-page or viewport screenshot of a URL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spider Cloud Crawling Transform API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transform HTML or PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spider.cloud/transform",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert raw HTML or PDF input into clean markdown, JSON, plain text, or other supported output formats."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
