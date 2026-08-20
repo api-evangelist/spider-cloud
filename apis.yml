@@ -28,6 +28,17 @@ tags:
   - Scraping
   - Data Extraction
   - URLs
+  - Artificial Intelligence
+  - Markdown
+  - MCP
+  - Rust
+  - Headless Browser
+  - Proxies
+tags_raw:
+  - Crawling
+  - Scraping
+  - Data Extraction
+  - URLs
   - AI
   - Markdown
   - MCP
@@ -47,6 +58,13 @@ apis:
   humanURL: https://spider.cloud/docs/integrations/mcp
   baseURL: https://mcp.spider.cloud/mcp
   tags:
+  - MCP
+  - Artificial Intelligence
+  - Agents
+  - Crawling
+  - Scraping
+  - Browser Automation
+  tags_raw:
   - MCP
   - AI
   - Agents
@@ -192,6 +210,8 @@ apis:
   humanURL: https://spider.cloud/docs/api
   baseURL: https://api.spider.cloud
   tags:
+  - Transforms
+  tags_raw:
   - Transform
   properties:
   - type: OpenAPI
