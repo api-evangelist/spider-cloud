@@ -5,6 +5,20 @@ description: >-
   structured JSON, screenshots, or links — at up to 100K pages per second — with anti-bot bypass, residential proxies,
   headless browsers, and native MCP, LangChain, LlamaIndex, CrewAI, and AutoGen integrations.
 kind: contract
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -243,6 +257,8 @@ apis:
   - type: RateLimits
     url: https://spider.cloud/docs/api
 common:
+  - type: IssueTracker
+    url: https://github.com/spider-rs/spider-cloud-mcp-v2/issues
   - type: License
     name: MIT
     url: https://github.com/spider-rs/spider-cloud-mcp-v2/blob/main/LICENSE
