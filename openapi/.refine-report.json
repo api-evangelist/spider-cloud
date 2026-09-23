@@ -1,15 +1,7 @@
 {
   "provider": "spider-cloud",
   "sources": [
-    "spider-cloud-crawling-api-openapi.yml",
-    "spider-cloud-data-api-openapi.yml",
-    "spider-cloud-fetch-api-openapi.yml",
-    "spider-cloud-links-api-openapi.yml",
-    "spider-cloud-scraping-api-openapi.yml",
-    "spider-cloud-screenshot-api-openapi.yml",
-    "spider-cloud-search-api-openapi.yml",
-    "spider-cloud-transform-api-openapi.yml",
-    "spider-cloud-unblocker-api-openapi.yml"
+    "_original/spider-cloud-openapi.yml"
   ],
   "outputs": [
     "spider-cloud-crawling-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spider-cloud-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "spider-cloud-crawling-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-fetch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-links-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-scraping-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-screenshot-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-transform-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spider-cloud-unblocker-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
