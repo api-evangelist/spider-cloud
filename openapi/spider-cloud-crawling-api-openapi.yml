@@ -51,28 +51,19 @@ paths:
           $ref: '#/components/responses/Throttled'
 components:
   responses:
-    Throttled:
-      description: Rate limit exceeded (10,000 RPM per account).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Throttled:
+      description: Rate limit exceeded (10,000 RPM per account).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: string
-        message:
-          type: string
     CrawlResponse:
       type: object
       properties:
@@ -122,6 +113,15 @@ components:
         chrome:
           type: boolean
           description: Use a full headless browser instead of HTTP-only fetcher.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

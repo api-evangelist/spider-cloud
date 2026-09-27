@@ -49,19 +49,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    TransformRequest:
-      type: object
-      properties:
-        html:
-          type: string
-        pdf_base64:
-          type: string
-        return_format:
-          type: string
-          enum:
-          - markdown
-          - text
-          - json
     Error:
       type: object
       properties:
@@ -79,6 +66,19 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    TransformRequest:
+      type: object
+      properties:
+        html:
+          type: string
+        pdf_base64:
+          type: string
+        return_format:
+          type: string
+          enum:
+          - markdown
+          - text
+          - json
   responses:
     Unauthorized:
       description: Missing or invalid API key.

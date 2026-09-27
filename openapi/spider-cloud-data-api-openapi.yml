@@ -90,27 +90,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ScraperDirectoryEntry:
-      type: object
-      properties:
-        domain:
-          type: string
-        category:
-          type: string
-        description:
-          type: string
-        config:
-          type: object
-          additionalProperties: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: string
-        message:
-          type: string
     CrawlLogEntry:
       type: object
       properties:
@@ -127,6 +106,18 @@ components:
         created_at:
           type: string
           format: date-time
+    ScraperDirectoryEntry:
+      type: object
+      properties:
+        domain:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        config:
+          type: object
+          additionalProperties: true
     CreditsResponse:
       type: object
       properties:
@@ -136,6 +127,15 @@ components:
           type: number
         compute_minutes_used:
           type: number
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.

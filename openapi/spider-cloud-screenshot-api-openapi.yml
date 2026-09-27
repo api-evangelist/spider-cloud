@@ -49,6 +49,24 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+    ScreenshotResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        image_base64:
+          type: string
+        image_url:
+          type: string
     ScreenshotRequest:
       type: object
       required:
@@ -68,24 +86,6 @@ components:
           - png
           - jpeg
           - webp
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: string
-        message:
-          type: string
-    ScreenshotResponse:
-      type: object
-      properties:
-        url:
-          type: string
-        image_base64:
-          type: string
-        image_url:
-          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.

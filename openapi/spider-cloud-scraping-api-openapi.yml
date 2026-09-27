@@ -51,19 +51,31 @@ paths:
           $ref: '#/components/responses/Throttled'
 components:
   responses:
-    Throttled:
-      description: Rate limit exceeded (10,000 RPM per account).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Throttled:
+      description: Rate limit exceeded (10,000 RPM per account).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    ScrapeResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: integer
+        content:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
     ScrapeRequest:
       type: object
       required:
@@ -94,18 +106,6 @@ components:
           type: string
         message:
           type: string
-    ScrapeResponse:
-      type: object
-      properties:
-        url:
-          type: string
-        status:
-          type: integer
-        content:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http
