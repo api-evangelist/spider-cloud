@@ -90,22 +90,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    CrawlLogEntry:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        status:
-          type: integer
-        bytes:
-          type: integer
-        compute_seconds:
-          type: number
-        created_at:
-          type: string
-          format: date-time
     ScraperDirectoryEntry:
       type: object
       properties:
@@ -136,6 +120,22 @@ components:
           type: string
         message:
           type: string
+    CrawlLogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        status:
+          type: integer
+        bytes:
+          type: integer
+        compute_seconds:
+          type: number
+        created_at:
+          type: string
+          format: date-time
   responses:
     Unauthorized:
       description: Missing or invalid API key.

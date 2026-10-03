@@ -49,15 +49,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: string
-        message:
-          type: string
     TransformResponse:
       type: object
       properties:
@@ -79,6 +70,15 @@ components:
           - markdown
           - text
           - json
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.

@@ -48,6 +48,13 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -57,15 +64,6 @@ components:
         code:
           type: string
         message:
-          type: string
-    UnblockerResponse:
-      type: object
-      properties:
-        url:
-          type: string
-        status:
-          type: integer
-        content:
           type: string
     UnblockerRequest:
       type: object
@@ -79,13 +77,15 @@ components:
           description: ISO country code for residential proxy egress.
         chrome:
           type: boolean
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    UnblockerResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: integer
+        content:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
