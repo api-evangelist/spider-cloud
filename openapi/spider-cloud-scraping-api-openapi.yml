@@ -63,15 +63,6 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: string
-        message:
-          type: string
     ScrapeRequest:
       type: object
       required:
@@ -93,6 +84,15 @@ components:
           type: boolean
         stealth:
           type: boolean
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.

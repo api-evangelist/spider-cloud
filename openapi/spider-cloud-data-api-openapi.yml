@@ -90,18 +90,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ScraperDirectoryEntry:
-      type: object
-      properties:
-        domain:
-          type: string
-        category:
-          type: string
-        description:
-          type: string
-        config:
-          type: object
-          additionalProperties: true
     CreditsResponse:
       type: object
       properties:
@@ -120,6 +108,18 @@ components:
           type: string
         message:
           type: string
+    ScraperDirectoryEntry:
+      type: object
+      properties:
+        domain:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        config:
+          type: object
+          additionalProperties: true
     CrawlLogEntry:
       type: object
       properties:

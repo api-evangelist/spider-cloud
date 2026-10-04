@@ -56,14 +56,14 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    UnblockerResponse:
       type: object
       properties:
-        error:
+        url:
           type: string
-        code:
-          type: string
-        message:
+        status:
+          type: integer
+        content:
           type: string
     UnblockerRequest:
       type: object
@@ -77,14 +77,14 @@ components:
           description: ISO country code for residential proxy egress.
         chrome:
           type: boolean
-    UnblockerResponse:
+    Error:
       type: object
       properties:
-        url:
+        error:
           type: string
-        status:
-          type: integer
-        content:
+        code:
+          type: string
+        message:
           type: string
   securitySchemes:
     bearerAuth:
