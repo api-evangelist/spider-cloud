@@ -56,15 +56,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    UnblockerResponse:
-      type: object
-      properties:
-        url:
-          type: string
-        status:
-          type: integer
-        content:
-          type: string
     UnblockerRequest:
       type: object
       required:
@@ -77,6 +68,15 @@ components:
           description: ISO country code for residential proxy egress.
         chrome:
           type: boolean
+    UnblockerResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        status:
+          type: integer
+        content:
+          type: string
     Error:
       type: object
       properties:
