@@ -40,7 +40,7 @@ modified: '2026-05-25'
 position: Consuming
 tags:
   - Crawling
-  - Scraping
+  - Web Scraping
   - Data Extraction
   - URLs
   - Artificial Intelligence
@@ -77,7 +77,7 @@ apis:
   - Artificial Intelligence
   - Agents
   - Crawling
-  - Scraping
+  - Web Scraping
   - Browser Automation
   tags_raw:
   - MCP
@@ -171,6 +171,8 @@ apis:
   humanURL: https://spider.cloud/docs/api
   baseURL: https://api.spider.cloud
   tags:
+  - Web Scraping
+  tags_raw:
   - Scraping
   properties:
   - type: OpenAPI
