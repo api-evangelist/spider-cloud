@@ -1,4 +1,4 @@
-# Spider (spider-cloud)
+# Spider
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,116 +66,144 @@
 
 Spider is a Rust-based, AI-friendly web scraping and crawling cloud. Point it at a URL and get back clean markdown, structured JSON, screenshots, or links — at up to 100K pages per second — with anti-bot bypass, residential proxies, headless browsers, and native MCP, LangChain, LlamaIndex, CrewAI, and AutoGen integrations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/spider-cloud/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/spider-cloud/refs/heads/main/apis.yml)
+**Areas:** Crawling · Web Scraping · Data Extraction · URLs · Artificial Intelligence · Markdown · MCP · Rust · Browser Automation · Proxies
 
-## Scope
+## Spider on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Spider is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/spider-cloud/](https://apis.io/providers/spider-cloud/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Crawling
-- Scraping
-- Data Extraction
-- URLs
-- AI
-- Markdown
-- MCP
-- Rust
-- Headless Browser
-- Proxies
+- [Spider Cloud MCP Server](https://apis.io/apis/spider-cloud/spider-mcp/) — Spider's hosted Model Context Protocol server exposes 22 tools — eight core operations (crawl, scrape, search, links, screenshot, unblocker, transform,…
+- [Spider Crawling API](https://apis.io/apis/spider-cloud/spider-cloud-crawling-api/) — Recursively crawl entire websites and collect every page.
+- [Spider Data API](https://apis.io/apis/spider-cloud/spider-cloud-data-api/) — Account data — scraper directory, crawl logs, credits balance.
+- [Spider Fetch API](https://apis.io/apis/spider-cloud/spider-cloud-fetch-api/) — Per-website APIs with AI-discovered configurations.
+- [Spider Links API](https://apis.io/apis/spider-cloud/spider-cloud-links-api/) — Collect all links from a website.
+- [Spider Scraping API](https://apis.io/apis/spider-cloud/spider-cloud-scraping-api/) — Extract content from individual web pages.
+- [Spider Screenshot API](https://apis.io/apis/spider-cloud/spider-cloud-screenshot-api/) — Capture full-page or viewport screenshots.
+- [Spider Search API](https://apis.io/apis/spider-cloud/spider-cloud-search-api/) — Search the web and crawl results.
+- [Spider Transform API](https://apis.io/apis/spider-cloud/spider-cloud-transform-api/) — Convert raw HTML or PDF into clean output (markdown, JSON, text).
+- [Spider Unblocker API](https://apis.io/apis/spider-cloud/spider-cloud-unblocker-api/) — Access content behind anti-bot protections.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Spider API
+Model Context Protocol servers that expose the API to agents.
 
-The Spider Cloud REST API exposes core /crawl, /scrape, /search, /links, /screenshot, /unblocker, and /transform endpoints, plus AI-discovered per-domain /fetch endpoints, residential/ISP/mobile proxy routing via proxy.spider.cloud, CDP/WebDriver BiDi cloud browsers, scraper directory lookups, crawl logs, and a credits endpoint. All endpoints accept and return JSON (also XML, CSV, JSONL via content-type) and authenticate with Bearer API keys. Up to 10,000 RPM per account.
+- [mcp](https://apis.io/servers/spider-cloud/mcp/)
 
-- **Human URL:** [https://spider.cloud/docs/api](https://spider.cloud/docs/api)
-- **Base URL:** `https://api.spider.cloud`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Crawling
-- Scraping
-- Data Extraction
-- URLs
-- AI
-- Markdown
-- Search
-- Screenshot
-- Headless Browser
-- Proxies
+- [Spider Cloud Agentic Access](https://apis.io/agentic-access/spider-cloud/spider-cloud-agentic-access/)
 
-#### Properties
+#### Collections (10)
 
-- [Documentation](https://spider.cloud/docs/api)
-- [Documentation](https://spider.cloud/docs/overview)
-- [OpenAPI](openapi/spider-cloud-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/spider-cloud.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spider-cloud.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://spider.cloud/docs/api)
-- [Rate Limits](https://spider.cloud/docs/api)
+Postman and Open Collection request collections.
 
-### Spider Cloud MCP Server
+- [Spider Cloud API](https://apis.io/collections/spider-cloud/open-spider-cloud/)
+- [Spider Cloud Crawling API](https://apis.io/collections/spider-cloud/open-spider-cloud-crawling-api/)
+- [Spider Cloud Crawling Data API](https://apis.io/collections/spider-cloud/open-spider-cloud-data-api/)
+- [Spider Cloud Crawling Fetch API](https://apis.io/collections/spider-cloud/open-spider-cloud-fetch-api/)
+- [Spider Cloud Crawling Links API](https://apis.io/collections/spider-cloud/open-spider-cloud-links-api/)
+- [Spider Cloud Crawling Scraping API](https://apis.io/collections/spider-cloud/open-spider-cloud-scraping-api/)
+- [Spider Cloud Crawling Screenshot API](https://apis.io/collections/spider-cloud/open-spider-cloud-screenshot-api/)
+- [Spider Cloud Crawling Search API](https://apis.io/collections/spider-cloud/open-spider-cloud-search-api/)
+- [Spider Cloud Crawling Transform API](https://apis.io/collections/spider-cloud/open-spider-cloud-transform-api/)
+- [Spider Cloud Crawling Unblocker API](https://apis.io/collections/spider-cloud/open-spider-cloud-unblocker-api/)
 
-Spider's hosted Model Context Protocol server exposes 22 tools — eight core operations (crawl, scrape, search, links, screenshot, unblocker, transform, get_credits), five AI-routed variants, and nine browser-automation tools (open, navigate, click, fill, screenshot, content, evaluate, wait_for, close) — to any MCP-compatible client. Authenticated with a Bearer API key. Also runnable locally via `npx spider-cloud-mcp`.
+#### Security (2)
 
-- **Human URL:** [https://spider.cloud/docs/integrations/mcp](https://spider.cloud/docs/integrations/mcp)
-- **Base URL:** `https://mcp.spider.cloud/mcp`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Spider Cloud Authentication](https://apis.io/security/spider-cloud/spider-cloud-authentication/)
+- [Spider Cloud Domain Security](https://apis.io/security/spider-cloud/spider-cloud-domain-security/)
 
-- MCP
-- AI
-- Agents
-- Crawling
-- Scraping
-- Browser Automation
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://spider.cloud/docs/integrations/mcp)
-- [Source Code](https://github.com/spider-rs/spider-cloud-mcp-v2)
-- [Authentication](https://spider.cloud/docs/integrations/mcp)
-- [Postman Collection](collections/spider-cloud.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spider-cloud.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Spider Cloud Plans Pricing](https://apis.io/plans/spider-cloud/spider-cloud-plans-pricing/)
 
-## Common Properties
+#### Rate limits (1)
+
+Published request limits.
+
+- [Spider Cloud Rate Limits](https://apis.io/rate-limits/spider-cloud/spider-cloud-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Spider Cloud Finops](https://apis.io/finops/spider-cloud/spider-cloud-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://spider.cloud)
 - [Documentation](https://spider.cloud/docs/overview)
-- [API Reference](https://spider.cloud/docs/api)
-- [Guides](https://spider.cloud/guides)
+- [API reference](https://spider.cloud/docs/api)
 - [Pricing](https://spider.cloud/pricing)
-- [Status Page](https://spidercloud.statuspage.io)
-- [GitHub Organization](https://github.com/spider-rs)
-- [Source Code](https://github.com/spider-rs/spider)
-- [S D Ks](https://github.com/spider-rs/spider-clients)
-- [SDK](https://github.com/spider-rs/spider-py)
-- [SDK](https://github.com/spider-rs/spider-nodejs)
-- [SDK](https://docs.rs/spider)
-- [M C P](https://mcp.spider.cloud/mcp)
-- [Integrations](https://spider.cloud/docs/integrations/mcp)
-- [Integration](https://spider.cloud/docs/integrations/langchain)
-- [Integration](https://spider.cloud/docs/integrations/llamaindex)
-- [Integration](https://spider.cloud/docs/integrations/crewai)
-- [Integration](https://spider.cloud/docs/integrations/flowiseai)
-- [Integration](https://spider.cloud/docs/integrations/agno)
-- [Integration](https://spider.cloud/docs/integrations/zapier)
-- [Integration](https://spider.cloud/docs/integrations/x402)
-- [Support](mailto:support@spider.cloud)
-- [Plans](plans/spider-cloud-plans-pricing.yml)
-- [Rate Limits](rate-limits/spider-cloud-rate-limits.yml)
-- [Fin Ops](finops/spider-cloud-finops.yml)
+- [Blog](https://spider.cloud/blog)
+- [GitHub](https://github.com/spider-rs)
+- [Status](https://spidercloud.statuspage.io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.9** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 50.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 44.2** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 10.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/spider-cloud/](https://apis.io/providers/spider-cloud/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Spider: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/spider-cloud/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
